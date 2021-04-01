@@ -24,13 +24,14 @@ public class LevelManager : MonoBehaviour {
 	private SoundManager soundManager = null;
 
 	void Awake () {
-		soundManager	= SoundManager.Instance;
 	}
 
 
 	// Use this for initialization
 	void Start () {
-		
+
+		soundManager = SoundManager.Instance;
+
 		key = GameObject.FindGameObjectWithTag("Key");
 		key.SetActive (false);
 

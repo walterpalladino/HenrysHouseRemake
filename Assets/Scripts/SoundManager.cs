@@ -23,6 +23,8 @@ public class SoundManager : MonoBehaviour {
 	[SerializeField]
 	private AudioClip levelUpSound;
 
+	private bool initialized = false;
+
 	void Awake() {
 		if (instance == null)
 			instance = this;
@@ -36,9 +38,15 @@ public class SoundManager : MonoBehaviour {
 	void Start () {
 		audioSource = GetComponent<AudioSource> ();
 		//PlayBackgroundMusic (true);
+		if (audioSource != null)
+        {
+			initialized = true;
+        }
 	}
 	
 	public void PlayBackgroundMusic (bool play) {
+
+		if (!initialized) return;
 
 		audioSource.Stop ();
 
@@ -50,6 +58,9 @@ public class SoundManager : MonoBehaviour {
 	}
 
 	public void PlayPickUpItem () {
+
+		if (!initialized) return;
+
 		if (audioSource.isPlaying) {
 			audioSource.Stop ();
 		}
@@ -58,6 +69,9 @@ public class SoundManager : MonoBehaviour {
 	}
 
 	public void PlayJump () {
+
+		if (!initialized) return;
+
 		if (audioSource.isPlaying) {
 			audioSource.Stop ();
 		}
@@ -66,6 +80,9 @@ public class SoundManager : MonoBehaviour {
 	}
 
 	public void PlayPlayerDied () {
+
+		if (!initialized) return;
+
 		if (audioSource.isPlaying) {
 			audioSource.Stop ();
 		}
@@ -74,6 +91,9 @@ public class SoundManager : MonoBehaviour {
 	}
 
 	public void PlayLevelUp () {
+
+		if (!initialized) return;
+
 		if (audioSource.isPlaying) {
 			audioSource.Stop ();
 		}
